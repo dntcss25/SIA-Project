@@ -19,5 +19,15 @@ const sequelize = require('../utils/database');
             type: DataType.STRING,
             allowNull: true,
         },
-    })
+        studentId: {
+            type: DataType.INTEGER,
+            allowNull: true,
+        },
+        instructorId: {
+            type: DataType.INTEGER,
+            allowNull: true,
+        },
+    }, {
+        tableName: 'profileusers' 
+    });
 module.exports = User;
