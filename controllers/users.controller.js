@@ -24,10 +24,11 @@ exports.createUser = async (req,res) => {
 exports.loginUser = async (req, res) => {
     console.log('loginUser :>> ', req.body);
     const { username, password } = req.body;
-    const user = await UsersModel.findOne({ where: { username:req.body.username, password:req.body.password } });
+    const user = await UsersModel.findOne({ where: { email:req.body.username, password:req.body.password } });
     try {
         if (!username || !password) {
             //check whether the client input the data needed.
+            console.log('Please Complete Credentials :>> ');
             return res.status(400).send({
                 success: false,
                 message: "Please provide the necessary fields.",
@@ -35,12 +36,14 @@ exports.loginUser = async (req, res) => {
         }
         if (!user) {
             //check the database if the requested user is existing.
+            console.log('Invalid Credentials :>> ');
             return res.status(400).send({
                 success: false,
                 message: "Invalid Credentials.",
             });
         }
         else{
+            console.log('Login successful :>> ');
             res.status(200).send({
                 //if the user fulfills the request then return the user data
                 success: true,
