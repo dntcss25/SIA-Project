@@ -22,6 +22,7 @@ exports.createUser = async (req,res) => {
 }
 
 exports.loginUser = async (req, res) => {
+    console.log('loginUser :>> ', req.body);
     const { username, password } = req.body;
     const user = await UsersModel.findOne({ where: { username:req.body.username, password:req.body.password } });
     try {

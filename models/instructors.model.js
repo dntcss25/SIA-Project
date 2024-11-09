@@ -48,7 +48,8 @@ const Instructor = sequelize.define('instructors', {
         allowNull: true,
     },
 }, {
-    tableName: 'instructors' 
+    tableName: 'instructors',
+    paranoid: true
 });
 
 module.exports = Instructor;
