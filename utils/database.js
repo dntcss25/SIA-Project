@@ -5,13 +5,8 @@ const sequelize = new Sequelize({
     host: 'localhost',
     username: 'root',
     password: '',
-    database: 'sample',
+    database: 'shopingdb',
     dialect: 'mysql'
 })
 
 module.exports = sequelize;
-
-
-//CHANGES
-
-
