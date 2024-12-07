@@ -1,28 +1,37 @@
-const express = require('express');  // Import express
-const bodyParser = require('body-parser');
-
-// Import route files
-const SupplierRoutes = require('./routes/SupplierRoutes');
-const CategoryRoutes = require('./routes/CategoryRoutes');
-const ProductRoutes = require('./routes/ProductRoutes');
-const CustomerRoutes = require('./routes/CustomerRoutes');
-const EmployeeRoutes = require('./routes/EmployeeRoutes');
-const OrderRoutes = require('./routes/OrderRoutes');
-const OrderDetailRoutes = require('./routes/OrderDetailRoutes');  // Fixed case
-const ShipperRoutes = require('./routes/ShipperRoutes');
-
+const express = require('express');
 const app = express();
-app.use(bodyParser.json());
+const cors = require('cors');
+const sequelize = require('./utils/database');
 
-// Register routes
-app.use('/api/suppliers', SupplierRoutes);
-app.use('/api/categories', CategoryRoutes);
-app.use('/api/products', ProductRoutes);
-app.use('/api/customers', CustomerRoutes);
-app.use('/api/employees', EmployeeRoutes);
-app.use('/api/orders', OrderRoutes);
-app.use('/api/order-details', OrderDetailRoutes);
-app.use('/api/shippers', ShipperRoutes);
+require('./models/associations.model');
 
-const PORT = 3000;
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+app.use(cors());
+app.use(express.json());
+
+
+const SuppliersController = require('./routes/suppliers');
+app.use('/Suppliers', SuppliersController);
+
+const ShippersController = require('./routes/shippers');
+app.use('/Shippers', ShippersController);
+
+const ProductsController = require('./routes/products');
+app.use('/Products', ProductsController);
+
+const CategoriesController = require('./routes/categories');
+app.use('/Categories', CategoriesController);
+
+const OrderDetailsController = require('./routes/orderdetails');
+app.use('/OrderDetails', OrderDetailsController);
+
+const OrdersController = require('./routes/orders');
+app.use('/Orders', OrdersController);
+
+const EmployeesControllers = require('./routes/employees');
+app.use('/Employees', EmployeesControllers);
+
+const CustomersController = require('./routes/customers');
+app.use('/Customers', CustomersController);
+
+
+app.listen(5000, () => console.log('Server is running at http://127.0.0.1:5000'));
