@@ -14,6 +14,10 @@ const Category = sequelize.define('Category', {
     Description: {
         type: DataTypes.TEXT,
         allowNull: true
+    },
+    Picture: {
+        type: DataTypes.BLOB,
+        allowNull: true
     }
 }, {
     tableName: 'categories',

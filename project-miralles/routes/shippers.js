@@ -3,6 +3,7 @@ const router = express.Router();
 const shipperController = require('../controllers/shippers.controller.js');
 
 router.get('/shippers', shipperController.getAllShippers);
+router.get('/shippers/:id', shipperController.getShipperById);
 router.post('/shippers', shipperController.createShipper);
 router.put('/shippers/:id', shipperController.updateShipper);
 router.delete('/shippers/:id', shipperController.deleteShipper);
