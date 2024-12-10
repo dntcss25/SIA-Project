@@ -13,7 +13,7 @@ exports.getAllOrderDetails = async (req, res) => {
 
 exports.getOrderDetailById = async (req, res) => {
     try {
-        const orderDetail = await OrderDetail.findOne({ where: { OrderDetailID: req.params.id } });
+        const orderDetail = await OrderDetail.findOne({ where: { OrderID: req.params.id } });
         if (orderDetail) {
             res.status(200).json(orderDetail);
         } else {
@@ -38,7 +38,7 @@ exports.createOrderDetails = async (req, res) => {
 
 exports.updateOrderDetails = async (req, res) => {
     try {
-        const [updated] = await OrderDetail.update(req.body, { where: { OrderDetailID: req.params.id } });
+        const [updated] = await OrderDetail.update(req.body, { where: { OrderID: req.params.id } });
         if (updated) {
             res.status(200).json({ message: 'The order detail has been updated successfully.' });
         } else {
@@ -52,7 +52,7 @@ exports.updateOrderDetails = async (req, res) => {
 
 exports.deleteOrderDetails = async (req, res) => {
     try {
-        const deleted = await OrderDetail.destroy({ where: { OrderDetailID: req.params.id } });
+        const deleted = await OrderDetail.destroy({ where: { OrderID: req.params.id } });
         if (deleted) {
             res.status(200).json({ message: 'The order detail has been deleted successfully.' });
         } else {

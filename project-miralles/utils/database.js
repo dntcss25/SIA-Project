@@ -3,7 +3,7 @@ const { Sequelize } = require('sequelize');
 const sequelize = new Sequelize('order_system_db', 'root', '', {
     host: 'localhost',   
     dialect: 'mysql',
-    logging: false, // Disable SQL logging for cleaner output
+    logging: false,
 });
 
 async function testConnection() {
